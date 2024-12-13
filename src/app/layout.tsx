@@ -1,10 +1,5 @@
-import type { Metadata } from "next";
-import "./globals.css";
 import { getLocale } from "next-intl/server";
-export const metadata: Metadata = {
-  title: "Azure Carpet",
-  description: "High quality carpets for a luxury lifestyle",
-};
+import "./globals.css";
 
 export default async function RootLayout({
   children,
@@ -14,7 +9,7 @@ export default async function RootLayout({
   const locale = await getLocale();
   return (
     <html lang={locale}>
-      <body className={`antialiased`}>{children}</body>
+      <body className="antialiased flex flex-col items-center scroll-smooth">{children}</body>
     </html>
   );
 }
