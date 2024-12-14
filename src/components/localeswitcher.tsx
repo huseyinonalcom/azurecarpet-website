@@ -1,5 +1,5 @@
 "use client";
-import { Link, usePathname } from "@/i18n/routing";
+import { usePathname } from "@/i18n/routing";
 import DE from "../../public/assets/flags/DE.svg";
 import EN from "../../public/assets/flags/EN.svg";
 import FR from "../../public/assets/flags/FR.svg";

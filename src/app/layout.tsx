@@ -9,7 +9,7 @@ export default async function RootLayout({
   const locale = await getLocale();
   return (
     <html lang={locale}>
-      <body className="antialiased flex flex-col items-center scroll-smooth">{children}</body>
+      <body className="antialiased flex flex-col items-center">{children}</body>
     </html>
   );
 }

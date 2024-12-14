@@ -4,7 +4,6 @@ import { getTranslations } from "next-intl/server";
 import { FaBars, FaGlobe, FaLocationArrow, FaPhone } from "react-icons/fa6";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import DynamicHeaderBG from "@/components/headerbg";
 import { MdEmail } from "react-icons/md";
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
@@ -31,8 +30,7 @@ export default async function LocaleLayout({
   const t = await getTranslations("layout");
   return (
     <>
-      <DynamicHeaderBG />
-      <header className="w-full flex flex-col items-center sticky top-0 z-10">
+      <header className="w-full flex flex-col items-center sticky top-0 z-10 backdrop-blur-md bg-gray-600/50">
         <div className="flex p-4 w-full flex-row justify-between max-w-screen-2xl items-center">
           <Link href="/" className="max-w-[50%] w-52 flex-shrink-0">
             <Image priority width={208} src={logo} alt="Azure Carpet Logo" />

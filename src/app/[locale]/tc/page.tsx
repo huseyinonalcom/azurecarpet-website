@@ -6,8 +6,9 @@ export default function TermsAndConditions() {
       </p>
       <p>
         De e-commerce webshop van de verkoper biedt haar klanten de mogelijkheid om de producten uit haar webwinkel online aan te kopen. Onderhavige Algemene
-        Voorwaarden ("Voorwaarden") zijn van toepassing op elke bestelling die geplaatst wordt door een bezoeker van deze e-commerce webshop (“Klant”).
-        Bijkomende voorwaarden van de Klant worden uitgesloten, behoudens wanneer deze voorafgaandelijk, schriftelijk en uitdrukkelijk aanvaard zijn.
+        Voorwaarden (&quot;Voorwaarden&quot;) zijn van toepassing op elke bestelling die geplaatst wordt door een bezoeker van deze e-commerce webshop
+        (&quot;Klant&quot;). Bijkomende voorwaarden van de Klant worden uitgesloten, behoudens wanneer deze voorafgaandelijk, schriftelijk en uitdrukkelijk
+        aanvaard zijn.
       </p>
       <p>
         <br />
@@ -81,7 +82,7 @@ export default function TermsAndConditions() {
       <p>
         In geval de overeenkomst de verrichting van diensten omvat en als de Klant heeft verzocht om de verrichting van diensten te laten beginnen tijdens de
         herroepingstermijn, betaalt de Klant een bedrag dat evenredig is aan hetgeen op het moment dat hij ons ervan in kennis heeft gesteld dat hij de
-        overeenkomst herroept reeds geleverd is, vergeleken met de volledige uitvoering van de overeenkomst."
+        overeenkomst herroept reeds geleverd is, vergeleken met de volledige uitvoering van de overeenkomst.
       </p>
       <br />
       <p>
