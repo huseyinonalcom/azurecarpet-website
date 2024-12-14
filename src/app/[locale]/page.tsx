@@ -1,8 +1,8 @@
-import { Link } from "@/i18n/routing";
 import homepagebg from "../../../public/assets/images/homepagebg.jpg";
 import { getTranslations } from "next-intl/server";
-import Image from "next/image";
 import { SlArrowDown } from "react-icons/sl";
+import { Link } from "@/i18n/routing";
+import Image from "next/image";
 
 const getCollections = () => {
   return ["Berlin", "Hayat", "Iranian Classics", "Parma", "Superverso", "Tiara", "Patchwork", "Bari", "Florence"];
