@@ -8,9 +8,9 @@ const nextConfig: NextConfig = withNextIntl({
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "d2j6dbq0eux0bg.cloudfront.net",
+        hostname: "r2.hocecomv1.com",
         port: "",
-        pathname: "/images/**",
+        pathname: "/uploads/**",
       },
     ],
   },
