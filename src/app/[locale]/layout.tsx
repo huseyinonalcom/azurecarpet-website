@@ -1,10 +1,10 @@
+import { FaBars, FaGlobe, FaLocationArrow, FaPhone } from "react-icons/fa6";
 import logo from "../../../public/assets/logo/azure-logo.png";
 import { LocaleSwitcher } from "@/components/localeswitcher";
 import { getTranslations } from "next-intl/server";
-import { FaBars, FaGlobe, FaLocationArrow, FaPhone } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { MdEmail } from "react-icons/md";
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
   const lang = (await params).locale;

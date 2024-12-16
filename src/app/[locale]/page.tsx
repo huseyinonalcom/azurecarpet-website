@@ -656,7 +656,6 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
             </Link>
           ))}
         </div>
-
         <div className="w-full flex flex-wrap bg-white max-w-screen-xl items-center justify-center mb-6">
           {collection!.products.map((prod, j) => (
             <div key={j} className="h-[400px] w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2 pb-4">
