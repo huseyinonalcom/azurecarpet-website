@@ -38,5 +38,9 @@
     "closed": "Closed",
     "contact-us": "Contact Us",
     "visit-us": "Visit Us"
+  },
+  "product": {
+    "title": "Product",
+    "subtitle": "Subtitle"
   }
 }

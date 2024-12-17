@@ -38,5 +38,9 @@
     "closed": "Gesloten",
     "contact-us": "Contact Us",
     "visit-us": "Bezoek ons"
+  },
+  "product": {
+    "title": "Product",
+    "subtitle": "Subtitle"
   }
 }
