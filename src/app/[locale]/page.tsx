@@ -610,7 +610,7 @@ export const collections = [
   },
 ];
 
-const getCollections = ({ name }: { name: string }) => {
+const getCollection = ({ name }: { name: string }) => {
   return collections.find((collection) => collection.name.toLowerCase() === name.toLowerCase());
 };
 
@@ -619,7 +619,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
 
   const collectionNameToFind = ((await searchParams).collection as string)?.toLowerCase() ?? "kermansah";
   const collections = ["Kermansah", "Rubi"];
-  const collection = getCollections({
+  const collection = getCollection({
     name: collectionNameToFind,
   });
 
@@ -658,7 +658,18 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
         </div>
         <div className="w-full flex flex-wrap bg-white max-w-screen-xl items-center justify-center mb-6">
           {collection!.products.map((prod, j) => (
-            <div key={j} className="h-[400px] w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2 pb-4">
+            <Link
+              href={
+                "/collections/" +
+                encodeURIComponent(collection!.name.toLowerCase()) +
+                "/" +
+                encodeURIComponent(prod.id) +
+                "/" +
+                encodeURIComponent(prod.name.toLowerCase())
+              }
+              key={j}
+              className="h-[400px] w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2 pb-4"
+            >
               <div className="h-full duration-500 pb-4 group rounded-xl border-3 shadow-md border-gray-700 flex flex-col gap-2 items-center overflow-hidden hover:shadow-azure-blue">
                 {prod.files.length > 1 ? (
                   <>
@@ -701,7 +712,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
                   <p className="text-sm text-center">{prod.code}</p>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
