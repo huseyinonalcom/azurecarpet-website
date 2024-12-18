@@ -21,7 +21,7 @@ const eslintConfig = [
         },
         {
           name: "next/navigation",
-          importNames: ["redirect", "permanentRedirect", "useRouter", "usePathname"],
+          importNames: ["useRouter", "usePathname"],
           message: "Please import from `@/i18n/routing` instead.",
         },
       ],

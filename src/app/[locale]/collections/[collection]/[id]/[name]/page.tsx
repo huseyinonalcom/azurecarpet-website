@@ -1,16 +1,16 @@
 import { getTranslations } from "next-intl/server";
 import { collections } from "@/app/[locale]/page";
-import { notFound, permanentRedirect } from "next/navigation";
 import Image from "next/image";
+import { notFound, permanentRedirect } from "next/navigation";
 
 const getProduct = ({ param }: { param: { locale?: string; collection?: string; id?: string; name?: string } }) => {
-  let allProducts = collections.flatMap((collection) =>
+  const allProducts = collections.flatMap((collection) =>
     collection.products.map((product) => ({
       ...product,
       collection: collection.name.toLowerCase(),
     }))
   );
-  let product = allProducts.find((prod) => prod.id == param.id);
+  const product = allProducts.find((prod) => prod.id == param.id);
   if (product) {
     if (
       decodeURIComponent(param.collection ?? "").toLowerCase() != product.collection.toLowerCase() ||
@@ -26,14 +26,11 @@ const getProduct = ({ param }: { param: { locale?: string; collection?: string; 
 };
 
 export default async function Home({ params }: { params: Promise<{ locale?: string; collection?: string; id?: string; name?: string }> }) {
-  const t = await getTranslations("product");
   const param = await params;
 
   const product = getProduct({
     param: param,
   });
-
-  console.log(product);
 
   return (
     <>
