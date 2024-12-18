@@ -658,15 +658,15 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
         </div>
         <div className="w-full flex flex-wrap bg-white max-w-screen-xl items-center justify-center mb-6">
           {collection!.products.map((prod, j) => (
-            <Link
-              href={
+            <div
+              /*  href={
                 "/collections/" +
                 encodeURIComponent(collection!.name.toLowerCase()) +
                 "/" +
                 encodeURIComponent(prod.id) +
                 "/" +
                 encodeURIComponent(prod.name.toLowerCase())
-              }
+              } */
               key={j}
               className="h-[400px] w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2 pb-4"
             >
@@ -712,7 +712,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
                   <p className="text-sm text-center">{prod.code}</p>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
