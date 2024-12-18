@@ -46,7 +46,7 @@ export default async function LocaleLayout({
           <div className="group/menu max-w-[70%] relative">
             <FaBars size={32} className="text-azure-grey md:hidden" />
             <div className="hidden p-2 px-4 md:gap-12 flex-col md:flex-row items-center gap-2 justify-between group-hover/menu:flex top-10 md:top-0 md:flex md:w-full absolute md:relative right-2 md:right-0 bg-black md:bg-transparent">
-              <NavLink href="/collections" text={t("collections")} />
+              <NavLink href="#" text={t("collections")} />
               <NavLink href="#location" text={t("showroom")} />
               <NavLink href="#contact" text={t("contact")} />
             </div>
