@@ -1,6 +1,7 @@
 import { notFound, permanentRedirect } from "next/navigation";
 import { allCollections } from "../../../page";
 import Image from "next/image";
+import ImageViewer from "./imageviewer";
 
 const getProduct = ({ param }: { param: { locale?: string; collection?: string; id?: string; name?: string } }) => {
   const allProducts = allCollections.flatMap((collection) =>
@@ -33,15 +34,11 @@ export default async function Home({ params }: { params: Promise<{ locale?: stri
 
   return (
     <>
-      <div className="w-full flex flex-row items-center max-w-screen-xl px-4 mx-auto mt-12">
-        <div className="flex flex-col items-center gap-2 w-[180px]">
-          {product.files.map((file, i) => (
-            <div key={i} className="relative w-[150px] h-[150px]">
-              <Image fill key={i} sizes="150px" src={file.url} alt={"image for " + product.name} style={{ objectFit: "contain" }} />
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-row overflow-scroll no-scrollbar"></div>
+      <ImageViewer product={product} />
+      <div className="h-[50px] mb-2">
+        <p className="font-semibold text-xl text-center">{product.collection.substring(0, 1).toUpperCase() + product.collection.substring(1)}</p>
+        <p className="font-semibold text-xl text-center">{product.name}</p>
+        <p className="text-sm text-center">{product.code}</p>
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const allCollections = [
   {
-    name: "Kermansah",
+    name: "Rubi",
     products: [
       {
         code: "0041A",
@@ -347,7 +347,7 @@ const allCollections = [
     ],
   },
   {
-    name: "Rubi",
+    name: "Kermansah",
     products: [
       {
         code: "0479A",
@@ -616,8 +616,7 @@ export default async function Home({ params }: { params: Promise<{ collection?: 
   return (
     <>
       <div className="w-full flex items-center pt-6 pb-10 px-12 rounded-xl bg-white shadow-xl max-w-screen-xl flex-col relative gap-6">
-        <div className="text-xl font-bold text-center">{collectionNameToFind}</div>
-
+        <div className="text-4xl font-black text-center">{collectionNameToFind.substring(0, 1).toUpperCase() + collectionNameToFind.substring(1)}</div>
         <div className="w-full flex flex-wrap bg-white max-w-screen-xl items-center justify-center mb-6">
           {allCollections
             .find((collection) => collection.name.toLowerCase() === collectionNameToFind)!
@@ -632,7 +631,7 @@ export default async function Home({ params }: { params: Promise<{ collection?: 
                   encodeURIComponent(prod.name.toLowerCase())
                 }
                 key={j}
-                className="h-[400px] w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2 pb-4"
+                className="h-[300px] md:h-[400px] w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2 pb-4"
               >
                 <div className="h-full duration-500 pb-4 group rounded-xl border-3 shadow-md border-gray-700 flex flex-col gap-2 items-center overflow-hidden hover:shadow-azure-blue">
                   {prod.files.length > 1 ? (
@@ -678,14 +677,6 @@ export default async function Home({ params }: { params: Promise<{ collection?: 
                 </div>
               </Link>
             ))}
-        </div>
-      </div>
-      <div className="w-full bg-white flex flex-col items-center pt-6 mx-12">
-        <div className="w-full max-w-screen-2xl px-4 flex flex-col items-center gap-12">
-          <div className="flex flex-col w-full">
-            <h2 className="text-2xl font-semibold mx-auto w-min whitespace-nowrap mb-6">{t("why-us")}</h2>
-            <p className="max-w-[800px] w-full mx-auto">{t("why-us-text")}</p>
-          </div>
         </div>
       </div>
     </>
