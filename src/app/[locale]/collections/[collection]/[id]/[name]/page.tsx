@@ -1,6 +1,5 @@
 import { notFound, permanentRedirect } from "next/navigation";
 import { allCollections } from "../../../page";
-import Image from "next/image";
 import ImageViewer from "./imageviewer";
 
 const getProduct = ({ param }: { param: { locale?: string; collection?: string; id?: string; name?: string } }) => {

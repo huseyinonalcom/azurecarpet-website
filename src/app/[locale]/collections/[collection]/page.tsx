@@ -1,4 +1,3 @@
-import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 
@@ -609,8 +608,6 @@ const allCollections = [
 ];
 
 export default async function Home({ params }: { params: Promise<{ collection?: string }> }) {
-  const t = await getTranslations("home");
-
   const collectionNameToFind = ((await params).collection as string)?.toLowerCase() ?? "kermansah";
 
   return (
