@@ -34,7 +34,7 @@ export default async function Home({ params }: { params: Promise<{ locale?: stri
   return (
     <>
       <ImageViewer product={product} />
-      <div className="h-[50px] mb-2">
+      <div className="h-[50px] mt-6">
         <p className="font-semibold text-xl text-center">{product.collection.substring(0, 1).toUpperCase() + product.collection.substring(1)}</p>
         <p className="font-semibold text-xl text-center">{product.name}</p>
         <p className="text-sm text-center">{product.code}</p>
