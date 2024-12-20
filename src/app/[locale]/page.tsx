@@ -1,5 +1,5 @@
 import homepagebg from "../../../public/assets/images/homepagebg.jpg";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { SlArrowDown } from "react-icons/sl";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
@@ -7,7 +7,12 @@ import Image from "next/image";
 const collectionsHomePage = [
   {
     name: "Kermansah",
-    description: "Kermansah is a collection of oriental inspired modern carpets. Available in different colors and sizes.",
+    description: {
+      en: "Kermansah is a collection of carpets with authentic oriental designs. Available in different colors and sizes.",
+      nl: "Kermansah is een collectie van tapijten met authentieke orientale ontwerpen. Beschikbaar in verschillende kleuren en grootten.",
+      fr: "Kermansah est une collection de tapis avec des designs authentiques orientaux. Disponible dans différentes couleurs et tailles.",
+      de: "Kermansah ist eine Sammlung von Tapieren mit authentischen orientalen Designs. Verfügbar in verschiedenen Farben und Größen.",
+    },
     files: [
       {
         url: "https://r2.hocecomv1.com/kermansah-cover.jpg",
@@ -17,7 +22,12 @@ const collectionsHomePage = [
   },
   {
     name: "Rubi",
-    description: "Rubi is a collection of carpets with authentic oriental designs. Available in different colors and sizes.",
+    description: {
+      en: "Rubi is a collection of oriental inspired modern carpets. Available in different colors and sizes.",
+      nl: "Rubi is een collectie van orientale geïnspireerde moderne tapijten. Beschikbaar in verschillende kleuren en grootten.",
+      fr: "Rubi est une collection de tapis inspirés d'oriental modernes. Disponible dans différentes couleurs et tailles.",
+      de: "Rubi ist eine Sammlung von orientalisch inspirierten modernen Tapieren. Verfügbar in verschiedenen Farben und Größen.",
+    },
     files: [
       {
         url: "https://r2.hocecomv1.com/rubi-cover.png",
@@ -29,7 +39,7 @@ const collectionsHomePage = [
 
 export default async function Home() {
   const t = await getTranslations("home");
-
+  const locale = await getLocale();
   return (
     <>
       <Image
@@ -70,7 +80,7 @@ export default async function Home() {
               </div>
               <div className="flex flex-col gap-2 items-center justify-start h-full">
                 <p className="text-2xl font-semibold">{collection.name}</p>
-                <p className="text-center">{collection.description}</p>
+                <p className="text-center">{collection.description[locale as "en" | "nl" | "fr" | "de"]}</p>
               </div>
             </Link>
           ))}

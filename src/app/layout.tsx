@@ -7,7 +7,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const locale = await getLocale();
-
   return (
     <html lang={locale}>
       <body className="antialiased flex flex-col items-center">{children}</body>

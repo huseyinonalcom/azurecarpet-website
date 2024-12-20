@@ -1,9 +1,9 @@
 import { FaBars, FaGlobe, FaLocationArrow, FaPhone } from "react-icons/fa6";
 import logo from "../../../public/assets/logo/azure-logo.png";
+import { getLocale, getTranslations } from "next-intl/server";
 import { LocaleSwitcher } from "@/components/localeswitcher";
-import { getTranslations } from "next-intl/server";
+import { Link, redirect, routing } from "@/i18n/routing";
 import { MdEmail } from "react-icons/md";
-import { Link } from "@/i18n/routing";
 import Image from "next/image";
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
@@ -28,6 +28,11 @@ export default async function LocaleLayout({
   children: React.ReactNode;
 }>) {
   const t = await getTranslations("layout");
+  const locale = await getLocale();
+
+  if (!routing.locales.includes(locale as "en" | "nl" | "fr" | "de")) {
+    redirect({ href: "/", locale: "en" });
+  }
   return (
     <>
       <header className="w-full flex flex-col items-center sticky top-0 z-10 backdrop-blur-md bg-gray-600/50">
