@@ -63,18 +63,16 @@ export default async function LocaleLayout({
               loading="lazy"
               className="md:w-5/12 h-96"
               id="google-map"
-              data-base="https://www.google.com/maps/embed/v1/place?key=AIzaSyCNCmAGyN4bJYu5qeLgbASzZafm-M5TA_o&amp;language=nl&amp;zoom=16&amp;q="
-              data-address="Neerlandweg%2016%2C%202610%20-%20Wilrijk"
               title={t("location")}
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCNCmAGyN4bJYu5qeLgbASzZafm-M5TA_o&amp;language=nl&amp;zoom=16&amp;q=Neerlandweg%2016%2C%202610%20-%20Wilrijk"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1251.4077699171844!2d4.395165609492516!3d51.148752598524794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3f1052f5297b3%3A0x8a11af3d52ec2084!2sIngberthoeveweg%204%2C%202630%20Aartselaar%2C%20Belgium!5e0!3m2!1sen!2str!4v1734725609170!5m2!1sen!2str"
             ></iframe>
             <div className="flex flex-col gap-2">
               <div className="flex flex-col gap-1">
                 <h2 className="text-xl font-bold">{t("location-address")}</h2>
-                <p>Neerlandweg 16</p>
-                <p>2610 Wilrijk/Antwerpen</p>
+                <p>Ingberthoeveweg 4</p>
+                <p>2630 Aartselaar/Antwerpen</p>
               </div>
-              <Link target="_blank" href={"https://www.google.com/maps/dir/?api=1&destination=Neerlandweg%2016%2C%202610%20-%20Wilrijk"}>
+              <Link target="_blank" href={"https://maps.app.goo.gl/Po1zFKLzS2SXCAvJ6"}>
                 <button
                   type="button"
                   className="relative inline-flex items-center justify-start overflow-hidden font-medium transition-all bg-azure-grey rounded hover:bg-azure-grey group py-1.5 px-2.5"
@@ -99,9 +97,9 @@ export default async function LocaleLayout({
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-semibold mx-auto w-min whitespace-nowrap mb-6">{t("contact-us")}</h2>
             <div className="flex flex-col md:flex-row gap-12 justify-center text-xl items-center">
-              <a href="tel:+3232352189" className="flex flex-row items-center gap-2">
+              <a href="tel:+32475479136" className="flex flex-row items-center gap-2">
                 <FaPhone />
-                <p>+32 (0) 3 235 21 89</p>
+                <p>+32 (0) 475 47 91 36</p>
               </a>
               <a href="mailto:info@azurecarpet.be" className="flex flex-row items-center gap-2">
                 <MdEmail />

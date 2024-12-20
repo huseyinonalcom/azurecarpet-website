@@ -10,7 +10,7 @@ const nextConfig: NextConfig = withNextIntl({
         protocol: "https",
         hostname: "r2.hocecomv1.com",
         port: "",
-        pathname: "/uploads/**",
+        pathname: "**",
       },
     ],
   },

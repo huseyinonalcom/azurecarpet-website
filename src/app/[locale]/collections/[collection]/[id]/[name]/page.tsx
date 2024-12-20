@@ -1,9 +1,9 @@
 import { notFound, permanentRedirect } from "next/navigation";
-import { collections } from "@/app/[locale]/page";
+import { allCollections } from "../../../page";
 import Image from "next/image";
 
 const getProduct = ({ param }: { param: { locale?: string; collection?: string; id?: string; name?: string } }) => {
-  const allProducts = collections.flatMap((collection) =>
+  const allProducts = allCollections.flatMap((collection) =>
     collection.products.map((product) => ({
       ...product,
       collection: collection.name.toLowerCase(),
