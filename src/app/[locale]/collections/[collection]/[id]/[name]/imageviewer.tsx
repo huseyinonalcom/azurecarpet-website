@@ -1,8 +1,8 @@
 "use client";
 
+import { BiChevronLeft } from "react-icons/bi";
 import { useState } from "react";
 import Image from "next/image";
-import { BiChevronLeft } from "react-icons/bi";
 
 export default function ImageViewer({ product }: { product: { name: string; files: { url: string; name: string }[] } }) {
   const [imageIndex, setImageIndex] = useState(0);

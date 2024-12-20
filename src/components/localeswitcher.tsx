@@ -1,9 +1,9 @@
 "use client";
-import { usePathname } from "@/i18n/routing";
 import DE from "../../public/assets/flags/DE.svg";
 import EN from "../../public/assets/flags/EN.svg";
 import FR from "../../public/assets/flags/FR.svg";
 import NL from "../../public/assets/flags/NL.svg";
+import { usePathname } from "@/i18n/routing";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
 
