@@ -1,10 +1,11 @@
-import { FaBars, FaGlobe, FaLocationArrow, FaPhone } from "react-icons/fa6";
+import { FaBars, FaFacebook, FaGlobe, FaInstagram, FaLocationArrow, FaPhone, FaTiktok } from "react-icons/fa6";
 import logo from "../../../public/assets/logo/azure-logo.png";
 import { getLocale, getTranslations } from "next-intl/server";
 import { LocaleSwitcher } from "@/components/localeswitcher";
 import { Link, redirect, routing } from "@/i18n/routing";
 import { MdEmail } from "react-icons/md";
 import Image from "next/image";
+import { FaInstagramSquare } from "react-icons/fa";
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
   const lang = (await params).locale;
@@ -35,13 +36,13 @@ export default async function LocaleLayout({
   }
   return (
     <>
-      <header className="w-full flex flex-col items-center sticky top-0 z-10 backdrop-blur-md bg-gray-600/50">
+      <header className="w-full flex flex-col items-center sticky top-0 z-10 backdrop-blur-md bg-white/80">
         <div className="flex p-4 w-full flex-row justify-between max-w-screen-2xl items-center">
-          <Link href="/" className="max-w-[50%] w-52 flex-shrink-0">
+          <Link href="/" className="max-w-[30%] w-52 flex-shrink-0">
             <Image priority width={208} src={logo} alt="Azure Carpet Logo" />
           </Link>
-          <div className="flex group relative mr-auto ml-12">
-            <FaGlobe size={32} className="text-azure-grey" />
+          <div className="flex group relative ml-auto mr-6 md:mr-12">
+            <FaGlobe className="text-azure-blue text-2xl md:text-4xl" />
             <div className="hidden group-hover:flex absolute top-4 -left-16 p-6">
               <div className="flex flex-col bg-black p-2 gap-2">
                 <LocaleSwitcher />
@@ -49,7 +50,7 @@ export default async function LocaleLayout({
             </div>
           </div>
           <div className="group/menu max-w-[70%] relative">
-            <FaBars size={32} className="text-azure-grey md:hidden" />
+            <FaBars className="text-azure-blue md:hidden text-2xl md:text-4xl" />
             <div className="hidden p-2 px-4 md:gap-12 flex-col md:flex-row items-center gap-2 justify-between group-hover/menu:flex top-10 md:top-0 md:flex md:w-full absolute md:relative right-2 md:right-0 bg-black md:bg-transparent">
               <NavLink href="/" text={t("collections")} />
               <NavLink href="#location" text={t("showroom")} />
@@ -102,6 +103,14 @@ export default async function LocaleLayout({
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-semibold mx-auto w-min whitespace-nowrap mb-6">{t("contact-us")}</h2>
             <div className="flex flex-col md:flex-row gap-12 justify-center text-xl items-center">
+              <a className="flex flex-row items-center gap-2">
+                <FaInstagramSquare />
+                <p>azurecarpet</p>
+              </a>
+              <a className="flex flex-row items-center gap-2">
+                <FaTiktok />
+                <p>azurecarpet</p>
+              </a>
               <a href="tel:+32475479136" className="flex flex-row items-center gap-2">
                 <FaPhone />
                 <p>+32 (0) 475 47 91 36</p>

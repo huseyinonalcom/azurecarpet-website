@@ -1,4 +1,4 @@
-import homepagebg from "../../../public/assets/images/homepagebg.jpg";
+import homepagebg from "../../../public/assets/images/homepagebg.png";
 import { getLocale, getTranslations } from "next-intl/server";
 import { SlArrowDown } from "react-icons/sl";
 import { Link } from "@/i18n/routing";
@@ -15,7 +15,7 @@ const collectionsHomePage = [
     },
     files: [
       {
-        url: "https://r2.hocecomv1.com/kermansah-cover.jpg",
+        url: "https://r2.hocecomv1.com/uploads/kermansah-cover.png",
         name: "kermansah-cover.png",
       },
     ],
@@ -52,11 +52,11 @@ export default async function Home() {
           objectFit: "cover",
         }}
       />
-      <div className="max-w-screen-md absolute mt-24 text-white bg-gray-600/50 p-12 pb-8 rounded-xl backdrop-blur-sm flex flex-col items-center mx-12">
-        <h2 className="text-4xl font-bold">{t("title")}</h2>
-        <h3 className="text-2xl font-semibold">{t("subtitle")}</h3>
+      <div className="max-w-screen-md absolute mt-24 text-white bg-gray-600/50 p-8 md:p-12 pb-8 rounded-xl backdrop-blur-sm flex flex-col items-center mx-12">
+        <h2 className="text-2xl md:text-4xl font-bold text-center">{t("title")}</h2>
+        <h3 className="text-lg md:text-2xl font-semibold text-center">{t("subtitle")}</h3>
         <Link href="#collections" className="text-2xl font-semibold">
-          <SlArrowDown size={52} className="text-azure-grey mt-6" />
+          <SlArrowDown size={52} className="text-azure-grey mt-4 md:mt-6" />
         </Link>
       </div>
       <div className="w-full flex items-center pt-6 pb-10 px-12 -mt-12 rounded-xl bg-white shadow-xl max-w-screen-xl flex-col relative gap-6">
