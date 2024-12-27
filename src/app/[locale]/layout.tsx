@@ -1,4 +1,4 @@
-import { FaBars, FaFacebook, FaGlobe, FaInstagram, FaLocationArrow, FaPhone, FaTiktok } from "react-icons/fa6";
+import { FaBars, FaGlobe, FaLocationArrow, FaPhone, FaTiktok } from "react-icons/fa6";
 import logo from "../../../public/assets/logo/azure-logo.png";
 import { getLocale, getTranslations } from "next-intl/server";
 import { LocaleSwitcher } from "@/components/localeswitcher";
