@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 }
 
 const NavLink = ({ href, text }: { href: string; text: string }) => (
-  <Link href={href} className="text-3xl text-azure-grey font-bold group relative px-1">
+  <Link href={href} className="text-3xl text-azure-blue font-bold group relative px-1">
     <span className="absolute left-0 bottom-0 w-full h-0 transition-all bg-azure-grey group-hover:h-full"></span>
     <span className="px-1 relative transition-all group-hover:text-azure-blue">{text}</span>
   </Link>
