@@ -38,6 +38,9 @@ const getCollections = async () => {
           type: {
             equals: "collection",
           },
+          NOT: {
+            image: null,
+          },
         },
       },
     })
