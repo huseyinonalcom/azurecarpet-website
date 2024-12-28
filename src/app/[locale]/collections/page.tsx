@@ -612,6 +612,7 @@ export const allCollections = [
 const getCollection = ({ name }: { name: string }) => {
   return allCollections.find((collection) => collection.name.toLowerCase() === name.toLowerCase());
 };
+
 export default async function Home({ params }: { params: Promise<{ collection?: string }> }) {
   const t = await getTranslations("home");
 
