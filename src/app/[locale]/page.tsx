@@ -38,6 +38,7 @@ const getCollections = async () => {
           type: {
             equals: "collection",
           },
+          materials: { some: {} },
           NOT: {
             image: null,
           },
