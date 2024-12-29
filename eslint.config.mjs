@@ -9,10 +9,13 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
+// get rid of no explicit any, after creating types
+
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
+      "@typescript-eslint/no-explicit-any": "warn",
       "no-restricted-imports": [
         "error",
         {

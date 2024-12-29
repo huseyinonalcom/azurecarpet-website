@@ -6,7 +6,7 @@ import { getClient } from "@/utils/creategraphqlclient";
 const getProduct = async ({ param }: { param: { locale?: string; collection?: string; id?: string; name?: string } }) => {
   let product: any;
 
-  let client = await getClient();
+  const client = await getClient();
 
   await client
     .query({

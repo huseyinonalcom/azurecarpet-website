@@ -9,7 +9,7 @@ import Image from "next/image";
 const getCollections = async () => {
   let collections: any[] = [];
 
-  let client = await getClient();
+  const client = await getClient();
 
   await client
     .query({

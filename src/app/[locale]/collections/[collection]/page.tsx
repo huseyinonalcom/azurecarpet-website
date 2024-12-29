@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 const getCollection = async ({ collectionName }: { collectionName: string }) => {
   let collections: any[] = [];
 
-  let client = await getClient();
+  const client = await getClient();
 
   await client
     .query({
