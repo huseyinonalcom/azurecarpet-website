@@ -21,6 +21,7 @@ const getProduct = async ({ param }: { param: { locale?: string; collection?: st
               url
             }
             description
+            descriptionLocalized
             name
             tags(where: $tagsWhere2) {
               id

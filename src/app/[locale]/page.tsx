@@ -19,6 +19,7 @@ const getCollections = async () => {
             id
             name
             description
+            descriptionLocalized
             image {
               name
               url
@@ -97,7 +98,7 @@ export default async function Home() {
               </div>
               <div className="flex flex-col gap-2 items-center justify-start h-full">
                 <p className="text-2xl font-semibold">{collection.name}</p>
-                <p className="text-center">{collection.description[locale as "en" | "nl" | "fr" | "de"]}</p>
+                <p className="text-center">{collection.descriptionLocalized[locale as "en" | "nl" | "fr" | "de"]}</p>
               </div>
             </Link>
           ))}
