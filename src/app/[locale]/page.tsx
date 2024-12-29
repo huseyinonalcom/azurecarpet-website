@@ -1,45 +1,62 @@
 import homepagebg from "../../../public/assets/images/homepagebg.png";
 import { getLocale, getTranslations } from "next-intl/server";
+import { getClient } from "@/utils/creategraphqlclient";
 import { SlArrowDown } from "react-icons/sl";
 import { Link } from "@/i18n/routing";
+import { gql } from "@apollo/client";
 import Image from "next/image";
 
-const collectionsHomePage = [
-  {
-    name: "Kermansah",
-    description: {
-      en: "Kermansah is a collection of carpets with authentic oriental designs. Available in different colors and sizes.",
-      nl: "Kermansah is een collectie van tapijten met authentieke orientale ontwerpen. Beschikbaar in verschillende kleuren en grootten.",
-      fr: "Kermansah est une collection de tapis avec des designs authentiques orientaux. Disponible dans différentes couleurs et tailles.",
-      de: "Kermansah ist eine Sammlung von Tapieren mit authentischen orientalen Designs. Verfügbar in verschiedenen Farben und Größen.",
-    },
-    files: [
-      {
-        url: "https://r2.hocecomv1.com/uploads/kermansah-cover.png",
-        name: "kermansah-cover.png",
+const getCollections = async () => {
+  let collections: any[] = [];
+
+  const client = await getClient();
+
+  await client
+    .query({
+      query: gql`
+        query Tags($where: TagWhereInput!) {
+          tags(where: $where) {
+            id
+            name
+            description
+            image {
+              name
+              url
+            }
+            materials {
+              name
+              files {
+                name
+                url
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        where: {
+          type: {
+            equals: "collection",
+          },
+          materials: { some: {} },
+          NOT: {
+            image: null,
+          },
+        },
       },
-    ],
-  },
-  {
-    name: "Rubi",
-    description: {
-      en: "Rubi is a collection of oriental inspired modern carpets. Available in different colors and sizes.",
-      nl: "Rubi is een collectie van orientale geïnspireerde moderne tapijten. Beschikbaar in verschillende kleuren en grootten.",
-      fr: "Rubi est une collection de tapis inspirés d'oriental modernes. Disponible dans différentes couleurs et tailles.",
-      de: "Rubi ist eine Sammlung von orientalisch inspirierten modernen Tapieren. Verfügbar in verschiedenen Farben und Größen.",
-    },
-    files: [
-      {
-        url: "https://r2.hocecomv1.com/rubi-cover.png",
-        name: "rubi-cover.png",
-      },
-    ],
-  },
-];
+    })
+    .then((data) => {
+      collections = data.data.tags;
+    });
+
+  return collections;
+};
 
 export default async function Home() {
   const t = await getTranslations("home");
   const locale = await getLocale();
+  const collections = await getCollections();
+
   return (
     <>
       <Image
@@ -62,7 +79,7 @@ export default async function Home() {
       <div className="w-full flex items-center pt-6 pb-10 px-12 -mt-12 rounded-xl bg-white shadow-xl max-w-screen-xl flex-col relative gap-6">
         <a id="collections" className="absolute -top-[100px]" />
         <div className="w-full flex flex-col gap-12 items-center">
-          {collectionsHomePage.map((collection, i) => (
+          {collections.map((collection, i) => (
             <Link
               key={i}
               type="button"
@@ -72,7 +89,7 @@ export default async function Home() {
               <div className="w-full lg:w-1/2 aspect-[8/5] relative">
                 <Image
                   sizes="(max-width: 768px) 90vw, 45vw"
-                  src={collection.files[0].url}
+                  src={collection.image.url}
                   fill
                   alt="background image for homepage - oriental rug"
                   style={{ objectFit: "cover" }}

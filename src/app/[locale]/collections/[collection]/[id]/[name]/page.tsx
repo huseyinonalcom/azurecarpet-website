@@ -1,21 +1,63 @@
 import { notFound, permanentRedirect } from "next/navigation";
-import { allCollections } from "../../../page";
 import ImageViewer from "./imageviewer";
+import { gql } from "@apollo/client";
+import { getClient } from "@/utils/creategraphqlclient";
 
-const getProduct = ({ param }: { param: { locale?: string; collection?: string; id?: string; name?: string } }) => {
-  const allProducts = allCollections.flatMap((collection) =>
-    collection.products.map((product) => ({
-      ...product,
-      collection: collection.name.toLowerCase(),
-    }))
-  );
-  const product = allProducts.find((prod) => prod.id == param.id);
+const getProduct = async ({ param }: { param: { locale?: string; collection?: string; id?: string; name?: string } }) => {
+  let product: any;
+
+  const client = await getClient();
+
+  await client
+    .query({
+      query: gql`
+        query Tags($where: MaterialWhereUniqueInput!, $tagsWhere2: TagWhereInput!) {
+          material(where: $where) {
+            id
+            code
+            ean
+            files {
+              name
+              url
+            }
+            description
+            name
+            tags(where: $tagsWhere2) {
+              id
+              type
+              name
+            }
+          }
+        }
+      `,
+      variables: {
+        where: {
+          id: param.id,
+        },
+        tagsWhere2: {
+          type: {
+            equals: "collection",
+          },
+        },
+      },
+    })
+    .then((data) => {
+      product = data.data.material;
+    });
+
   if (product) {
+    let collections: any[] = [];
+    collections = product.tags.filter((tag: any) => tag.type === "collection");
     if (
-      decodeURIComponent(param.collection ?? "").toLowerCase() != product.collection.toLowerCase() ||
+      !param.collection ||
+      collections.length == 0 ||
+      collections.filter((collection) => collection.name.toLowerCase() == param.collection!.toLowerCase()).length == 0 ||
       decodeURIComponent(param.name ?? "").toLowerCase() != product!.name.toLowerCase()
     ) {
-      permanentRedirect("/" + param.locale + "/collections/" + product.collection.toLowerCase() + "/" + product.id + "/" + product.name.toLowerCase());
+      if (collections.length == 0) {
+        notFound();
+      }
+      permanentRedirect("/" + param.locale + "/collections/" + collections.at(0)!.name.toLowerCase() + "/" + product.id + "/" + product.name.toLowerCase());
     } else {
       return product;
     }
@@ -27,15 +69,15 @@ const getProduct = ({ param }: { param: { locale?: string; collection?: string; 
 export default async function Home({ params }: { params: Promise<{ locale?: string; collection?: string; id?: string; name?: string }> }) {
   const param = await params;
 
-  const product = getProduct({
-    param: param,
+  const product = await getProduct({
+    param,
   });
 
   return (
     <>
       <ImageViewer product={product} />
       <div className="h-[50px] mt-6">
-        <p className="font-semibold text-xl text-center">{product.collection.substring(0, 1).toUpperCase() + product.collection.substring(1)}</p>
+        <p className="font-semibold text-xl text-center">{param.collection!.substring(0, 1).toUpperCase() + param.collection!.substring(1)}</p>
         <p className="font-semibold text-xl text-center">{product.name}</p>
         <p className="text-sm text-center">{product.code}</p>
       </div>
