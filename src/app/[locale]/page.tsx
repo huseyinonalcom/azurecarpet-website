@@ -46,7 +46,6 @@ const getCollections = async () => {
       },
     })
     .then((data) => {
-      console.log(data);
       collections = data.data.tags;
     });
 
@@ -57,9 +56,7 @@ export default async function Home() {
   const t = await getTranslations("home");
   const locale = await getLocale();
   const collections = await getCollections();
-  collections.forEach((collection) => {
-    console.log(collection);
-  });
+
   return (
     <>
       <Image

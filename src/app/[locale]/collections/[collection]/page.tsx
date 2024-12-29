@@ -2,6 +2,7 @@ import { Link } from "@/i18n/routing";
 import { getClient } from "@/utils/creategraphqlclient";
 import { gql } from "@apollo/client";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 const getCollection = async ({ collectionName }: { collectionName: string }) => {
   let collections: any[] = [];
@@ -21,6 +22,7 @@ const getCollection = async ({ collectionName }: { collectionName: string }) => 
               url
             }
             materials {
+              id
               ean
               code
               name
@@ -49,15 +51,17 @@ const getCollection = async ({ collectionName }: { collectionName: string }) => 
       },
     })
     .then((data) => {
-      console.log(data);
       collections = data.data.tags;
+      if (collections.length == 0) {
+        notFound();
+      }
     });
 
   return collections;
 };
 
 export default async function Home({ params }: { params: Promise<{ collection?: string }> }) {
-  const collectionNameToFind = ((await params).collection as string)?.toLowerCase() ?? "kermansah";
+  const collectionNameToFind = ((await params).collection as string)?.toLowerCase();
   const allCollections = await getCollection({ collectionName: collectionNameToFind });
   return (
     <>
@@ -66,7 +70,7 @@ export default async function Home({ params }: { params: Promise<{ collection?: 
         <div className="w-full flex flex-wrap bg-white max-w-screen-xl items-center justify-center mb-6">
           {allCollections
             .find((collection) => collection.name.toLowerCase() === collectionNameToFind)!
-            .materials.map((prod, j) => (
+            .materials.map((prod: any) => (
               <Link
                 href={
                   "/collections/" +
@@ -76,7 +80,7 @@ export default async function Home({ params }: { params: Promise<{ collection?: 
                   "/" +
                   encodeURIComponent(prod.name.toLowerCase())
                 }
-                key={j}
+                key={prod.id}
                 className="h-[300px] md:h-[400px] w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2 pb-4"
               >
                 <div className="h-full duration-500 pb-4 group rounded-xl border-3 shadow-md border-gray-700 flex flex-col gap-2 items-center overflow-hidden hover:shadow-azure-blue">
