@@ -60,6 +60,9 @@ const getProduct = async ({ param }: { param: { locale?: string; collection?: st
       }
       permanentRedirect("/" + param.locale + "/collections/" + collections.at(0)!.name.toLowerCase() + "/" + product.id + "/" + product.name.toLowerCase());
     } else {
+      if (product.files.length == 0) {
+        notFound();
+      }
       return product;
     }
   } else {

@@ -12,7 +12,7 @@ const getCollection = async ({ collectionName }: { collectionName: string }) => 
   await client
     .query({
       query: gql`
-        query Tags($where: TagWhereInput!) {
+        query Tags($where: TagWhereInput!, $materialsWhere2: MaterialWhereInput!) {
           tags(where: $where) {
             id
             name
@@ -21,7 +21,7 @@ const getCollection = async ({ collectionName }: { collectionName: string }) => 
               name
               url
             }
-            materials {
+            materials(where: $materialsWhere2) {
               id
               ean
               code
@@ -46,6 +46,11 @@ const getCollection = async ({ collectionName }: { collectionName: string }) => 
           materials: { some: {} },
           NOT: {
             image: null,
+          },
+        },
+        materialsWhere2: {
+          files: {
+            some: {},
           },
         },
       },
