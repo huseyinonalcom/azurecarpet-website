@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function ImageViewer({ product }: { product: { name: string; files: { url: string; name: string }[] } }) {
   const [imageIndex, setImageIndex] = useState(0);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState<number | undefined>(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
   const changeIndex = ({ direction }: { direction: "next" | "previous" }) => {
@@ -33,7 +33,6 @@ export default function ImageViewer({ product }: { product: { name: string; file
         <Lightbox
           slides={product.files.map((file) => ({ src: file.url }))}
           index={lightboxIndex}
-          // @ts-expect-error
           setIndex={(v) => setLightboxIndex(v)}
           render={{
             slide: ({ slide }) => {
@@ -46,8 +45,6 @@ export default function ImageViewer({ product }: { product: { name: string; file
                   sizes="100vw"
                   loading="eager"
                   draggable={false}
-                  // @ts-expect-error
-                  blurDataURL={slide.blurDataURL}
                   style={{
                     minWidth: 0,
                     minHeight: 0,
