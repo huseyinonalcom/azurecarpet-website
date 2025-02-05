@@ -33,7 +33,7 @@ export default function ImageViewer({ product }: { product: { name: string; file
         <Lightbox
           slides={product.files.map((file) => ({ src: file.url }))}
           index={lightboxIndex}
-          // @ts-ignore
+          // @ts-expect-error
           setIndex={(v) => setLightboxIndex(v)}
           render={{
             slide: ({ slide }) => {
@@ -46,7 +46,7 @@ export default function ImageViewer({ product }: { product: { name: string; file
                   sizes="100vw"
                   loading="eager"
                   draggable={false}
-                  // @ts-ignore
+                  // @ts-expect-error
                   blurDataURL={slide.blurDataURL}
                   style={{
                     minWidth: 0,
