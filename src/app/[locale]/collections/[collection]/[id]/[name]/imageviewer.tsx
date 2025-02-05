@@ -82,7 +82,7 @@ export default function ImageViewer({ product }: { product: { name: string; file
           }
           className="relative w-full aspect-square"
         >
-          <BiChevronLeft size={48} className="text-black" />
+          <BiChevronLeft name="Previous Image" aria-label="Previous Image" size={48} className="text-black" />
         </button>
       </div>
       <button
@@ -104,7 +104,7 @@ export default function ImageViewer({ product }: { product: { name: string; file
           }
           className="relative w-full aspect-square"
         >
-          <BiChevronLeft size={48} className="text-black rotate-180" />
+          <BiChevronLeft name="Next Image" aria-label="Next Image" size={48} className="text-black rotate-180" />
         </button>
       </div>
     </div>
