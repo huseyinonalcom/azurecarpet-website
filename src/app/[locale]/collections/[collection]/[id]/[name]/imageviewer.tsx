@@ -1,10 +1,10 @@
 "use client";
 
+import Lightbox from "yet-another-react-lightbox-lite";
+import "yet-another-react-lightbox-lite/styles.css";
 import { BiChevronLeft } from "react-icons/bi";
 import { useState } from "react";
 import Image from "next/image";
-import Lightbox from "yet-another-react-lightbox-lite";
-import "yet-another-react-lightbox-lite/styles.css";
 
 export default function ImageViewer({ product }: { product: { name: string; files: { url: string; name: string }[] } }) {
   const [imageIndex, setImageIndex] = useState(0);
@@ -33,6 +33,7 @@ export default function ImageViewer({ product }: { product: { name: string; file
         <Lightbox
           slides={product.files.map((file) => ({ src: file.url }))}
           index={lightboxIndex}
+          // @ts-ignore
           setIndex={(v) => setLightboxIndex(v)}
           render={{
             slide: ({ slide }) => {
@@ -45,7 +46,8 @@ export default function ImageViewer({ product }: { product: { name: string; file
                   sizes="100vw"
                   loading="eager"
                   draggable={false}
-                  blurDataURL={(slide as any).blurDataURL}
+                  // @ts-ignore
+                  blurDataURL={slide.blurDataURL}
                   style={{
                     minWidth: 0,
                     minHeight: 0,
