@@ -1,13 +1,11 @@
 "use client";
 
+import { HiMiniMagnifyingGlassPlus } from "react-icons/hi2";
 import Lightbox from "yet-another-react-lightbox-lite";
 import "yet-another-react-lightbox-lite/styles.css";
 import { BiChevronLeft } from "react-icons/bi";
 import { useState } from "react";
 import Image from "next/image";
-import { ImLoop } from "react-icons/im";
-import { FaMagnifyingGlass } from "react-icons/fa6";
-import { HiMiniMagnifyingGlassPlus } from "react-icons/hi2";
 
 export default function ImageViewer({ product }: { product: { name: string; files: { url: string; name: string }[] } }) {
   const [imageIndex, setImageIndex] = useState(0);
