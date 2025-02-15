@@ -4,7 +4,7 @@ import { setContext } from "@apollo/client/link/context";
 
 export const { getClient } = registerApolloClient(async () => {
   const clientNoAuth = new ApolloClient({
-    link: new HttpLink({ uri: "https://dfatest.huseyinonal.com/api/graphql" }),
+    link: new HttpLink({ uri: "https://dfa.huseyinonal.com/api/graphql" }),
     cache: new InMemoryCache(),
   });
 
@@ -48,7 +48,7 @@ export const { getClient } = registerApolloClient(async () => {
   });
 
   return new ApolloClient({
-    link: authLink.concat(new HttpLink({ uri: "https://dfatest.huseyinonal.com/api/graphql" })),
+    link: authLink.concat(new HttpLink({ uri: "https://dfa.huseyinonal.com/api/graphql" })),
     cache: new InMemoryCache(),
   });
 });

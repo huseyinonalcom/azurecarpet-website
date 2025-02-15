@@ -96,13 +96,9 @@ export default function ImageViewer({ product }: { product: { name: string; file
         className="w-2/3 md:w-full relative h-96 focus:outline-none"
       >
         <Image fill key={imageIndex} sizes="100vw" src={product.files[imageIndex].url} alt={"image for " + product.name} style={{ objectFit: "contain" }} />
-        <button
-          type="button"
-          onClick={() => setLightboxOpen(false)}
-          className="absolute bottom-0 left-5 rounded-full p-2 text-white bg-black md:text-black md:bg-transparent"
-        >
+        <div className="absolute bottom-0 left-5 rounded-full p-2 text-white bg-black md:text-black md:bg-transparent">
           <HiMiniMagnifyingGlassPlus name="Zoom" aria-label="Zoom" size={32} />
-        </button>
+        </div>
       </button>
       <div className="w-[1/6] md:hidden flex flex-col items-center gap-2">
         <button
