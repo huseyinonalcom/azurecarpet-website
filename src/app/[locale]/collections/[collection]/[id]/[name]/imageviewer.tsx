@@ -5,6 +5,9 @@ import "yet-another-react-lightbox-lite/styles.css";
 import { BiChevronLeft } from "react-icons/bi";
 import { useState } from "react";
 import Image from "next/image";
+import { ImLoop } from "react-icons/im";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { HiMiniMagnifyingGlassPlus } from "react-icons/hi2";
 
 export default function ImageViewer({ product }: { product: { name: string; files: { url: string; name: string }[] } }) {
   const [imageIndex, setImageIndex] = useState(0);
@@ -93,6 +96,13 @@ export default function ImageViewer({ product }: { product: { name: string; file
         className="w-2/3 md:w-full relative h-96 focus:outline-none"
       >
         <Image fill key={imageIndex} sizes="100vw" src={product.files[imageIndex].url} alt={"image for " + product.name} style={{ objectFit: "contain" }} />
+        <button
+          type="button"
+          onClick={() => setLightboxOpen(false)}
+          className="absolute bottom-0 left-5 rounded-full p-2 text-white bg-black md:text-black md:bg-transparent"
+        >
+          <HiMiniMagnifyingGlassPlus name="Zoom" aria-label="Zoom" size={32} />
+        </button>
       </button>
       <div className="w-[1/6] md:hidden flex flex-col items-center gap-2">
         <button
